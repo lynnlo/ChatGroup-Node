@@ -1,0 +1,19 @@
+body{
+	background-color: #181a1b;
+	color: #e8e6e3;
+	margin: 0 auto;
+	padding: 2em;
+	width: 75%;
+	font-family: monospace;
+	font-size: 200%;
+}
+
+img{
+	width: 10em;	
+}
+
+#topbar img{
+	float: left;
+	padding: 1em;
+	padding-top: 0; 
+}

@@ -1,0 +1,16 @@
+{
+  "name": "chatgroup-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Mario O, Lynn O",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "express": "^4.17.1",
+    "notevil": "^1.3.3"
+  }
+}
