@@ -3,17 +3,13 @@
 
 // Javascript Node
 
-safeEval = require("notevil")
+let safeEval = require("notevil");
 
-function main(Message, full_command){
-	command = full_command.shift();
-	arg = full_command.join(" ")
-
-	if (command == "js"){
-		console.log(arg)
+function main(Message, command, full_command){
+	arg = full_command.join(" ").replace("```", "")
+	if (command == "js" || command == "```js"){
 		try{
 			output = safeEval(arg);
-			console.log(output)
 			return output;
 		} catch(e){
 			return e.message;
@@ -21,4 +17,4 @@ function main(Message, full_command){
 	}
 }
 
-module.exports = main
+module.exports = main;

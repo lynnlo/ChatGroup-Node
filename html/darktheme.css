@@ -12,8 +12,13 @@ img{
 	width: 10em;	
 }
 
+a{
+	color: #c8c6f3;
+}
+
 #topbar img{
 	float: left;
 	padding: 1em;
 	padding-top: 0; 
 }
+

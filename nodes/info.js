@@ -3,15 +3,14 @@
 
 // Information Node
 
-function main(Message, full_command){
-	command = full_command[0];
+function main(Message, command, full_command){
 
 	if (command == "website"){
-		return "You can find Chat Group Node's Website Here: https://chatgroup-node.lynnlo.repl.co";
+		return "You can find Chat Group Node's Website Here: http://node.ongtech.co/";
 	}
 	else if (command == "leaderboard"){
 		return "You can find Chat Group's Leaderboard Here: https://arcanebot.xyz/leaderboard/ChatGroup";
 	}
 }
 
-module.exports = main
+module.exports = main;
