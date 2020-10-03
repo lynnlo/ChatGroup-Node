@@ -1,5 +1,5 @@
 // Chat Group Node Bot
-// Mario O, Lynn O, Andres A
+// Mario O, Lynn O, Andres A, Jade C
 
 let discord = require("discord.js");
 let express = require("express");
@@ -11,6 +11,7 @@ var Server = new express();
 
 var prefixes = ["cgn ", ""];
 var Nodes = [];
+var state = true;
 
 fs.readdir("./nodes/", function(err, files){
 	if (err){ console.log("Error : "+ err);}
@@ -20,15 +21,20 @@ fs.readdir("./nodes/", function(err, files){
 })
 
 Bot.on("message", function(Message){
+	if (Message.author.id == process.env.USER && Message.content == "*"){state = !state}
 	prefixes.forEach((prefix) =>{
-		if (Message.author.id != Bot.user.id && Message.content.startsWith(prefix)){
-			full_command = Message.content.replace(prefix, "").replace(/\n/g, " ").split(" ");
+		if (Message.content.replace("", "").startsWith(prefix)){
+			full_command = Message.content.replace(prefix, "").replace("~", "").replace(/\n/g, " ").split(" ");
 			command =  full_command.shift()
 			Nodes.forEach(function(module){
+				if (!state){return}
 				return_message = module(Message, command, full_command)
 				if (return_message){
-					Message.channel.send(return_message);
-				}			
+					if (Message.author.id == Bot.user.id){Message.delete()}
+					Message.channel.send(return_message).catch((e) => {
+						Message.channel.send("Sorry! There was an error.\n" + (e || ""))
+					});
+				}
 			})
 		}
 	})
@@ -36,4 +42,4 @@ Bot.on("message", function(Message){
 
 Server.use("/",express.static(path.join(__dirname, "html/"))).listen(process.env.PORT || 3000, () => {});
 
-Bot.login(process.env.TOKEN);
+Bot.login(process.env.TOKEN);q

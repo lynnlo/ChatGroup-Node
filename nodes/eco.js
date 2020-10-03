@@ -27,7 +27,7 @@ function main(Message, command, full_command){
 			return "You've worked! Coins : " + fun_data.data.coins[Message.author.id];
 		}
 		else{
-			return "You don't have any coins. Try creating a coinbank account.";
+			return "You don't have a coinbank address. Try creating a coinbank account.";
 		}
 	}
 	else if (command == "WORK"){
@@ -37,7 +37,7 @@ function main(Message, command, full_command){
 			return "You've worked, hard! Coins : " + fun_data.data.coins[Message.author.id];
 		}
 		else{
-			return "You don't have any coins. Try creating a coinbank account.";
+			return "You don't have a coinbank address. Try creating a coinbank account.";
 		}
 	}
 	else if (command == "**WORK**"){
@@ -47,7 +47,7 @@ function main(Message, command, full_command){
 			return "You've worked, super hard! Coins : " + fun_data.data.coins[Message.author.id];
 		}
 		else{
-			return "You don't have any coins. Try creating a coinbank account.";
+			return "You don't have a coinbank address. Try creating a coinbank account.";
 		}
 	}
 	else if (command == "__**WORK**__"){
@@ -57,17 +57,17 @@ function main(Message, command, full_command){
 			return "You've worked, like really really hard! Coins : " + fun_data.data.coins[Message.author.id];
 		}
 		else{
-			return "You don't have any coins. Try creating a coinbank account.";
+			return "You don't have a coinbank address. Try creating a coinbank account.";
 		}
 	}
 	else if (command == "account"){
 		if (fun_data.data.coins.hasOwnProperty(Message.author.id)){
-			return "You already have a coinbank account";
+			return "Address : `"+Math.round((Message.author.id/2)*2)+"` \nCoins : `"+fun_data.data.coins[Message.author.id]+"`";
 		}
 		else{
 			fun_data.data.coins[Message.author.id] = 0;
 			fun_data.save();
-			return "Congrats, You've just created your coinbank account!";
+			return "Congrats, You've just created your coinbank account! \nAddress : `"+Math.round((Message.author.id/2)*2)+"`";
 		}
 	}
 	else if (command == "remove"){
