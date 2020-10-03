@@ -42,4 +42,4 @@ Bot.on("message", function(Message){
 
 Server.use("/",express.static(path.join(__dirname, "html/"))).listen(process.env.PORT || 3000, () => {});
 
-Bot.login(process.env.TOKEN);q
+Bot.login(process.env.TOKEN);

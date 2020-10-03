@@ -75,7 +75,7 @@ function main(Message, command, full_command){
 		});
 		req.headers({
 			"x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-			"x-rapidapi-key": "8164eb8e38msh9974cb48c4847d3p11c6a4jsnf66de627b33c",
+			"x-rapidapi-key": process.env.RAPIDKEY,
 			"useQueryString": true
 		});
 		req.end(function (res) {
@@ -94,7 +94,7 @@ function main(Message, command, full_command){
 		});
 		req.headers({
 			"x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-			"x-rapidapi-key": "8164eb8e38msh9974cb48c4847d3p11c6a4jsnf66de627b33c",
+			"x-rapidapi-key": process.env.RAPIDKEY,
 			"useQueryString": true
 		});
 		req.end(function (res) {
@@ -106,7 +106,7 @@ function main(Message, command, full_command){
 		var req = unirest("GET", "https://joke3.p.rapidapi.com/v1/joke");
 		req.headers({
 			"x-rapidapi-host": "joke3.p.rapidapi.com",
-			"x-rapidapi-key": "8164eb8e38msh9974cb48c4847d3p11c6a4jsnf66de627b33c",
+			"x-rapidapi-key": process.env.RAPIDKEY,
 			"useQueryString": true
 		});
 		req.end(function (res) {
