@@ -95,7 +95,7 @@ function main(Message, command, full_command){
 			return "You don't have any wounds. Try angering a friend to get more.";
 		}
 	}
-	/*else if (command == "stab"){
+	else if (command == "stab"){
 		victim = Array.from(Message.guild.members.cache)[random.int(0, Message.guild.memberCount - 1)][1];
 		if (fun_data.data.wounds.hasOwnProperty(victim.id)){
 			fun_data.data.wounds[victim.id] += 1;
@@ -133,7 +133,7 @@ function main(Message, command, full_command){
 			fun_data.save();
 			return "You've bitten <@"+victim.id+"> (First Hit) you monster! Total Wounds : " + fun_data.data.wounds[victim.id];
 		}
-	}*/
+	}
 
 
 }

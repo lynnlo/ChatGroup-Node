@@ -37,13 +37,28 @@ function main(Message, command, full_command){
 	else if (command == "cube"){
 		return arg0 ** 3;
 	}
+	else if (command == "sin"){
+		return Math.sin(arg0);
+	}
+	else if (command == "cosin"){
+		return Math.cosin(arg0);
+	}
+	else if (command == "tan"){
+		return Math.tan(arg0);
+	}
 
 	// Functions
 	if (command == "distance"){
-		return Math.sqrt((arg3 - arg1) ** 2) + ((arg0 - arg2) ** 2);
+		return Math.sqrt((arg3 - arg1) ** 2) + ((arg2 - arg1) ** 2);
+	}
+	else if (command == "complement"){
+		return (90 - arg0);
+	}
+	else if (command == "supplement "){
+		return (180 - arg0);
 	}
 	else if (command == "quadratic"){
-		// Fix this later
+		// TODO Fix this later
 		return ((-1 * arg1) + Math.sqrt((arg1 ** 2) - (4 * (arg0 * arg2)))) / (2 * arg0), ((-1 * arg1) - Math.sqrt((arg1 ** 2) - (4 * (arg0 * arg2)))) / (2 * arg0);
 	}
 }

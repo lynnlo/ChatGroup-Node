@@ -46,16 +46,47 @@ function main(Message, command, full_command){
 		})();
 		setTimeout(() => Message.channel.send(image).catch(), 1000);
 	}
+	else if (command == "birb"){
+		(async () => {
+			req = await fetch('https://some-random-api.ml/img/birb');
+			response = await req.json()
+			image = await response["link"];
+		})();
+		setTimeout(() => Message.channel.send(image).catch(), 1000);
+	}
+	else if (command == "wink"){
+		(async () => {
+			req = await fetch('https://some-random-api.ml/animu/wink');
+			response = await req.json()
+			image = await response["link"];
+		})();
+		setTimeout(() => Message.channel.send(image).catch(), 1000);
+	}
+	else if (command == "hug"){
+		(async () => {
+			req = await fetch('hhttps://some-random-api.ml/animu/hug');
+			response = await req.json()
+			image = await response["link"];
+		})();
+		setTimeout(() => Message.channel.send(image).catch(), 1000);
+	}
+	else if (command == "pat"){
+		(async () => {
+			req = await fetch('https://some-random-api.ml/animu/pat');
+			response = await req.json()
+			image = await response["link"];
+		})();
+		setTimeout(() => Message.channel.send(image).catch(), 1000);
+	}
 	else if (command == "meme"){
 		(async () => {
 			req = await fetch('https://some-random-api.ml/meme');
 			response = await req.json()
 			image = await response["image"];
-			text = await response["text"];
 		})();
-		setTimeout(() => Message.channel.send(text+"\n"+image).catch(), 1000);
+		setTimeout(() => Message.channel.send(image).catch(), 1000);
 	}
-	else if (command == "ai"){
+	else if (command == "ai" || command == "ai2"){
 		(async () => {
 			response = await fetch('https://some-random-api.ml/chatbot?message='+full_command.join(" "))
 			.then((req) => req.json())
@@ -80,7 +111,7 @@ function main(Message, command, full_command){
 		});
 		req.end(function (res) {
 			if (res.error || res.body.value.length < 1) {return "Error"};
-			Message.channel.send(res.body.value[0]["title"]+"\n"+res.body.value[0]["url"] || "Not loaded.");
+			Message.channel.send(res.body.value[0]["title"]+"\n"+res.body.value[0]["url"] || "Not found.").catch();
 		});
 	}
 	else if (command == "isearch"){
@@ -98,8 +129,27 @@ function main(Message, command, full_command){
 			"useQueryString": true
 		});
 		req.end(function (res) {
+			if (res.error || res.body.value.lengtXh < 1) {return "Error"};
+			Message.channel.send(res.body.value.length > 0 ? res.body.value[0]["url"] : "Not found.").catch();
+		});
+	}
+	else if (command == "nsearch"){
+		var req = unirest("GET", "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI");
+		req.query({
+			"safeSearch": "false",
+			"pageNumber": "1",
+			"pageSize": "1",
+			"q": full_command.join(" "),
+			"autoCorrect": "false"
+		});
+		req.headers({
+			"x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+			"x-rapidapi-key": process.env.RAPIDKEY,
+			"useQueryString": true
+		});
+		req.end(function (res) {
 			if (res.error || res.body.value.length < 1) {return "Error"};
-			Message.channel.send(res.body.value[0]["url"] || "Not loaded.");
+			Message.channel.send(res.body.value.length > 0 ? res.body.value[0]["url"] : "Not found.").catch();
 		});
 	}
 	else if (command == "joke"){
@@ -111,7 +161,7 @@ function main(Message, command, full_command){
 		});
 		req.end(function (res) {
 			if (res.error) {return "Error"};
-			Message.channel.send(res.body.content || "Not loaded.");
+			Message.channel.send(res.body.value.length > 0 ? res.body.content : "Not found.").catch();
 		});
 	}
 }

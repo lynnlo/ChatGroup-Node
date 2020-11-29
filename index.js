@@ -9,7 +9,7 @@ let path = require("path");
 var Bot = new discord.Client();
 var Server = new express();
 
-var prefixes = ["cgn ", ""];
+var prefixes = ["", "j "];
 var Nodes = [];
 var state = true;
 
@@ -20,17 +20,22 @@ fs.readdir("./nodes/", function(err, files){
 	})
 })
 
+Bot.on("ready", function(){
+	Bot.user.setStatus("dnd");
+	Bot.user.setActivity("Version : " + process.env.VERSION);
+})
+
 Bot.on("message", function(Message){
 	if (Message.author.id == process.env.USER && Message.content == "*"){state = !state}
 	prefixes.forEach((prefix) =>{
 		if (Message.content.replace("", "").startsWith(prefix)){
 			full_command = Message.content.replace(prefix, "").replace("~", "").replace(/\n/g, " ").split(" ");
-			command =  full_command.shift()
+			command =  full_command.shift();
 			Nodes.forEach(function(module){
 				if (!state){return}
 				return_message = module(Message, command, full_command)
 				if (return_message){
-					if (Message.author.id == Bot.user.id){Message.delete()}
+					if (Message.author.id == Bot.user.id){Message.delete().catch()}
 					Message.channel.send(return_message).catch((e) => {
 						Message.channel.send("Sorry! There was an error.\n" + (e || ""))
 					});

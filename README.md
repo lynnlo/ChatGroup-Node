@@ -12,5 +12,13 @@ It uses a modular system to running commands, similar to the `discord.ext.comman
 
 ChatGroup Node is feature rich with many fun and useful tools, such as: 
 * Calculator
+
 * Economy
+
 * Javascript Evaluator
+
+* Jokes
+
+* Images
+
+* Websearch
